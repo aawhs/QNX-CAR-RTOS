@@ -12,6 +12,7 @@
 #include <vector>
 #include <fstream>
 #include <cstdlib>
+#include "appcore.hpp"
 
 using namespace std;
 class Producer
@@ -39,6 +40,8 @@ public:
 
     //Get Data
     bool loadData();
+
+    void run();
 };
 
 #endif /* PRODUCER_HPP_ */

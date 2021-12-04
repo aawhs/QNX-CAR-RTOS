@@ -44,36 +44,13 @@ typedef struct _producer_msg{
 
 
 int main() {
-	//std::cout << "Hello World!!!" << std::endl; // prints Hello World!!!
 
 	 char tmp[256];
 	 getcwd(tmp, 256);
 	 cout << "Current working directory: " << tmp << endl;
 
 	appcore ac; //create instance so that starting time is initialized
-	std::cout << "Initial time: " << ac.getElapsedTimeSeconds() << std::endl;
-//
-//	//Does indeed show 5
-//	sleep(5);
-//	std::cout << "New time: " << ac.getElapsedTimeSeconds() << std::endl;
-//
-//	sleep(5);
-//	std::cout << "New time: " << ac.getElapsedTimeSeconds() << std::endl;
-//
-//	sleep(5);
-//	std::cout << "New time: " << ac.getElapsedTimeSeconds() << std::endl;
-
-
-	//IPC for command input task -> producer tasks
-//	Producer* producer1 = new Producer("../data/dataset-Fuel_consumption.txt");
-//	if(producer1->openFile()){
-//		cout << "File stream of File: " << producer1->getFileName() << " is open"<< endl;
-//	}
-//	if(producer1->loadData()){
-//		cout << "Data loaded"<< endl;
-//	}
-
-	//IPC for command input task -> producer tasks
+	cout << "Initial time: " << ac.getElapsedTimeSeconds() << std::endl;
 
 	Producer producer1("dataset-Fuel_consumption.txt");
 	if(producer1.openFile()){
@@ -82,23 +59,6 @@ int main() {
 	if(producer1.loadData()){
 		cout << "Data loaded"<< endl;
 	}
-
-
-
-	//IPC for producer tasks -> consumer task
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	return 0;
 

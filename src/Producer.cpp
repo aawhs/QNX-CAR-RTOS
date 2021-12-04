@@ -56,7 +56,3 @@ bool Producer::loadData()
 }
 
 
-
-https://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@github.com/SuperThunder/COEN320-Project.git
-
-
