@@ -13,7 +13,13 @@
 #include <vector>
 #include <iostream>
 
-
+class commandprocessor {
+public:
+	commandprocessor();
+	static void updatePeriod();
+private:
+	static void init();
+};
 
 
 #endif /* COMMANDPROCESSOR_HPP_ */
