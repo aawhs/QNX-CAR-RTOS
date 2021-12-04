@@ -6,6 +6,7 @@
  */
 
 #include "appcore.hpp"
+#include "commandprocessor.hpp"
 
 //Initialize the static start_time member
 //see https://stackoverflow.com/questions/19469475/struct-static-member-meaning-definition
@@ -176,20 +177,6 @@ int appcore::createSharedMem()
 	ptr = mmap(0,SHM_SIZE, PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0);
 	if (ptr == MAP_FAILED) {
 		printf("Map failed\n"); return -1;
-	}
-
-
-	//Initialize all int values to index
-	for(int i = 0; i < 5; i++)
-	{
-		appcore::writeSharedMem(i, i);
-	}
-
-
-	//Initialize all float values to 0.0;
-	for(int i=5; i<10;i++)
-	{
-		appcore::writeSharedMem(i, (i-5)*1.0f);
 	}
 
 	return 0;
