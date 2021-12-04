@@ -24,16 +24,20 @@ private:
    ifstream filestream;
    float data = 0.0;
    vector <float> dataVector;
+   int tasknumber = 0;
 
 public:
 
     //Constructor & Deconstructor
-    Producer(string);
+    Producer(string, int);
     ~Producer();
 
     //Setters and getters
     void setFileName(string);
     string getFileName();
+
+    void setTaskNumber(int);
+    int getTaskNumber();
 
     //File stream
     bool openFile();

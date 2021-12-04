@@ -10,7 +10,7 @@
 
 //Constructors
 
-Producer::Producer(string fileName)
+Producer::Producer(string fileName, int task)
 {
     setFileName(fileName);
 }
@@ -28,6 +28,16 @@ void Producer::setFileName(string fileName)
 string Producer::getFileName()
 {
     return filename;
+}
+
+void Producer::setTaskNumber(int task)
+{
+	tasknumber = task;
+}
+
+int Producer::getTaskNumber()
+{
+	return tasknumber;
 }
 
 bool Producer::openFile()
@@ -60,15 +70,21 @@ bool Producer::loadData()
 void Producer::run()
 {
 	int elapsedTime;
+	int period;
 	int index = 0;
-	while(index < 20){
+	while(index < dataVector.size()-1){
 		cout << "Producer Thread Started" <<endl;
+
 		elapsedTime = appcore::getElapsedTimeSeconds();
+		period = appcore::readSharedMemInt(tasknumber);
 		data = dataVector[elapsedTime];
-		index+=5;
-		cout << "Elapsed Time : " << elapsedTime <<" Data : "<<data<<endl;
+
+		appcore::writeSharedMem(tasknumber+5,data);
+
+		cout << "Elapsed Time : " << elapsedTime <<" Data : "<<appcore::readSharedMemFloat(tasknumber+5)<<endl;
 		cout << "Producer Thread Suspended" <<endl;
-		sleep(5);
+
+		sleep(period);
 	}
 }
 
