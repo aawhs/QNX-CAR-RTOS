@@ -9,7 +9,12 @@
 
 using namespace std;
 
-void init()
+commandprocessor::commandprocessor() {
+	// Initialize default values in shared memory.
+	init();
+}
+
+void commandprocessor::init()
 {
     // Create task pairs with task number and period length
     const int DEFAULT_PERIOD = 5;
@@ -30,7 +35,7 @@ void init()
 	}
 }
 
-void updatePeriod() {
+void commandprocessor::updatePeriod() {
     // Get taskNum and period from user input.
     int taskNum, period;
 
