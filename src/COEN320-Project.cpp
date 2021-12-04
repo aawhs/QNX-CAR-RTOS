@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <thread>
+#include "display.hpp"
 
 #include "appcore.hpp"
 #include "commandprocessor.hpp"
@@ -36,10 +37,10 @@ int main() {
 	}
 
 	thread pthread1 (&Producer::run, &producer1);
-
-
+	thread pthread2 (&displayFunc);
 
 	pthread1.join();
+	pthread2.join();
 	cout << "Producer Threads Ended" <<endl;
 
 	return 0;
