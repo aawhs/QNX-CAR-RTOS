@@ -1,19 +1,15 @@
 How project works
 
-Simple timing options
 
-1) use threads and sleeping for task period
-
-2) use one timer with modulos for the task period
-    - still need a seperate thread 
-
+Timing
+- Done with threads and sleep(period)
+- If we wanted to be fancier we could switch to tracking milliseconds and use sleep( (period-elapsed) / 1000)
+    - Our functions are probably fast enough this doesn't matter
 
 
 Init
-- Creates instance of command processor function running in thread
-- Creates instance of producer 5x running in thread
-- Creates instance running in thread
-
+- Sets up shared memory
+- Creates threads for command processor, 5x producer instances, consumer display
 
 
 Shared memory structure
@@ -34,7 +30,7 @@ Command processor(shared_memory_filename)
 - runs in thread
 - does not sleep, is blocked by waiting for user input
 - Prompts user for producer task number (1-5) and new period for that task (1-100)
-- Writes the new period to appropriate location of shared memory for that task
+- Writes the new period to appropriate location of shared memory for that task (overall area is bytes 0 to 19)
 - On first startup, set default value of 5s period for all tasks
 
 
@@ -46,6 +42,8 @@ Producer(data_filename, shared_memory_filename, shared_memory_period_index, shar
 - sleeps period amount
 
 
-Consumer(shared_memory_filename, shared_mem_values_start)
+Consumer(shared_memory_filename)
+- runs in thread
+- Runs periodically with p=1
+- reads the 5 variables from shared memory (contiguous 5 floats from byte 20 to 39)
 - print out the 5 variables in a nice looking way
-- reads them from shared memory (contiguous 5 floats)
