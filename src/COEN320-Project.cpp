@@ -6,14 +6,11 @@
  */
 
 #include <iostream>
-
+#include <thread>
 
 #include "appcore.hpp"
 #include "Producer.hpp"
 
-
-//The IPC system is essentially a 5 variable fan out / 5 variable fan in
-//But implemented with shared memory
 
 
 int main() {
@@ -32,6 +29,11 @@ int main() {
 	if(producer1.loadData()){
 		cout << "Data loaded"<< endl;
 	}
+
+	thread pthread1 (&Producer::run, &producer1);
+
+	pthread1.join();
+	cout << "Producer Thread Ended" <<endl;
 
 	return 0;
 
