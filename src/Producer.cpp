@@ -72,7 +72,8 @@ void Producer::run()
 	int elapsedTime;
 	int period;
 	int index = 0;
-	while(index < dataVector.size()-1){
+	int datasize = dataVector.size()-1;
+	while(index < datasize){
 		cout << "Producer Thread Started" <<endl;
 
 		elapsedTime = appcore::getElapsedTimeSeconds();
@@ -84,6 +85,7 @@ void Producer::run()
 		cout << "Elapsed Time : " << elapsedTime <<" Data : "<<appcore::readSharedMemFloat(tasknumber+5)<<endl;
 		cout << "Producer Thread Suspended" <<endl;
 
+		index += period;
 		sleep(period);
 	}
 }
