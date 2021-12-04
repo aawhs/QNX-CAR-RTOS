@@ -66,12 +66,6 @@ float appcore::readSharedMemFloat(int loc)
 	//std::cout << "Read from shared mem loc " << loc << " value: " << value << std::endl;
 
 
-	/* remove the shared memory segment */
-	if (shm_unlink(name) == -1) {
-    	perror("in shm_unlink()");
-		exit(1);
-	}
-
 	return *value_ptr;
 }
 
@@ -90,11 +84,6 @@ int appcore::readSharedMemInt(int loc)
 
 	//std::cout << "Read from shared mem loc " << loc << " value: " << *value_ptr << std::endl;
 
-	/* remove the shared memory segment */
-	if (shm_unlink(name) == -1) {
-    	perror("in shm_unlink()");
-		exit(1);
-	}
 
 	return *value_ptr;
 }
@@ -179,10 +168,10 @@ int appcore::createSharedMem()
 	}
 
 
-	//Initialize all int values to index
+	//Initialize all int values to 5
 	for(int i = 0; i < 5; i++)
 	{
-		appcore::writeSharedMem(i, i);
+		appcore::writeSharedMem(i, 5);
 	}
 
 

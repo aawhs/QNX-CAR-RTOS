@@ -22,7 +22,7 @@ int main() {
 	appcore ac; //create instance so that starting time is initialized
 	cout << "Initial time: " << appcore::getElapsedTimeSeconds() << std::endl;
 
-	Producer producer1("dataset-Fuel_consumption.txt");
+	Producer producer1("dataset-Fuel_consumption.txt",0);
 	if(producer1.openFile()){
 		cout << "File stream of File: " << producer1.getFileName() << " is open"<< endl;
 	}
