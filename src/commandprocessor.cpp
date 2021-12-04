@@ -9,44 +9,42 @@
 
 using namespace std;
 
-int commandprocessor()
+void init()
 {
     // Create task pairs with task number and period length
     const int DEFAULT_PERIOD = 5;
+    const float DEFAULT_VALUE = 0.0f;
     const int NUMBER_OF_TASKS = 5;
 
-    vector<pair<int, int>> tasks;
-    for (int i = 0; i < NUMBER_OF_TASKS; i++)
-    {
-        tasks.push_back(pair<int, int>(i+1, DEFAULT_PERIOD));
-    }
+    // Initialize all int values to default period.
+	for(int i = 0; i < 5; i++)
+	{
+		appcore::writeSharedMem(i, DEFAULT_PERIOD);
+	}
 
-    for (auto task : tasks)
-    {
-        cout << task.first << " " << task.second << endl;
-    }
 
-    // Write tasks to shared memory.
-
+	// Initialize all float values to default values
+	for(int i=5; i<10;i++)
+	{
+		appcore::writeSharedMem(i, DEFAULT_VALUE);
+	}
 }
 
 void updatePeriod() {
     // Get taskNum and period from user input.
     int taskNum, period;
 
-    cout << "Enter taskNum and period:";
+    cout << "Enter task number (1 to 5) and period: ";
     cin >> taskNum >> period;
 
     while (taskNum < 1 or taskNum > 5)
     {
-        cout << "Enter valid taskNum and period:";
+        cout << "Enter valid task number (1 to 5) and period: ";
         cin >> taskNum >> period;
     }
 
-    cout << "Task:" << taskNum << ", Period: " << period << endl;
-
-    // TODO: Write taskNum and period to shared memory.
-
+    // Write period to shared memory for given taskNum.
+    appcore::writeSharedMem(taskNum-1, period);
 }
 
 
