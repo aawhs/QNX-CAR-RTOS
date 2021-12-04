@@ -25,7 +25,8 @@ int main() {
 
 	commandprocessor cp;
 
-	Producer producer1("dataset-Fuel_consumption.txt");
+	//Dataset and task number (zero indexed, so task 1 fuel is 0)
+	Producer producer1("dataset-Fuel_consumption.txt", 0);
 
 	if(producer1.openFile()){
 		cout << "File stream of File: " << producer1.getFileName() << " is open"<< endl;
