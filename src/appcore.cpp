@@ -175,7 +175,7 @@ int appcore::createSharedMem()
 	}
 
 
-	//Initialize all float values to 0.0;
+	//Initialize all float values
 	for(int i=5; i<10;i++)
 	{
 		appcore::writeSharedMem(i, (i-5)*1.0f);

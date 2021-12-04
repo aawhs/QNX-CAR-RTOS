@@ -32,8 +32,10 @@ int main() {
 
 	thread pthread1 (&Producer::run, &producer1);
 
+
+
 	pthread1.join();
-	cout << "Producer Thread Ended" <<endl;
+	cout << "Producer Threads Ended" <<endl;
 
 	return 0;
 
