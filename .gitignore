@@ -55,4 +55,7 @@ dkms.conf
 .idea/
 
 
-
+build/*
+.vscode/*
+.DS_Store/*
+.DS_Store
