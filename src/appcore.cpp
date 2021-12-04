@@ -32,12 +32,14 @@ int appcore::getElapsedTimeSeconds()
 	int elapsed_seconds = current_time.tv_sec - start_time.tv_sec;
 	long int elapsed_nanoseconds = current_time.tv_nsec - start_time.tv_nsec;
 
+	//Ignore the nanosecond portion since all we want is seconds
+
 	//Round the nanosecond portion
-	//If greater than or equal to 0.5 seconds, add another second
-	if(elapsed_nanoseconds >= 500000000L)
-	{
-		elapsed_seconds += 1;
-	}
+	//If greater than or equal to 0.99999... seconds, add another second
+	//	if(elapsed_nanoseconds >= 500000000L)
+	//	{
+	//		elapsed_seconds += 1;
+	//	}
 
 	return elapsed_seconds;
 }
@@ -73,7 +75,12 @@ float appcore::readSharedMemFloat(int loc)
 
 int appcore::readSharedMemInt(int loc)
 {
-	return 0;
+	void *ptr;
+	ptr = mmap(0,SIZE, PROT_READ, MAP_SHARED, shm_fd, 0);
+	if (ptr == MAP_FAILED) {
+    	perror("in mmap()");
+		exit(1);
+	}
 }
 
 int appcore::writeSharedMem(int loc, float val)
@@ -88,6 +95,7 @@ int appcore::writeSharedMem(int loc, int val)
 
 int appcore::createSharedMem()
 {
+
 	//std::cout << name;
 
 	/* create the shared memory segment */

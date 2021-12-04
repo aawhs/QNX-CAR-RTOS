@@ -49,6 +49,8 @@ bool Producer::loadData()
         filestream >> data;
     }
 
+    cout << "Data " << filename << " record count: " << dataVector.size() << endl;
+
     if(filestream.eof()){
         return true;
     }
