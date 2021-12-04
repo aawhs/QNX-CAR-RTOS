@@ -6,7 +6,7 @@
  */
 
 #include <iostream>
-
+#include <thread>
 
 #include "appcore.hpp"
 #include "Producer.hpp"
@@ -29,6 +29,11 @@ int main() {
 	if(producer1.loadData()){
 		cout << "Data loaded"<< endl;
 	}
+
+	thread pthread1 (&Producer::run, &producer1);
+
+	pthread1.join();
+	cout << "Producer Thread Ended" <<endl;
 
 	return 0;
 
