@@ -2,7 +2,7 @@
  * core.cpp
  *
  *  Created on: Nov. 7, 2021
- *      Author: alec
+ *      Author: Alec
  */
 
 #include "appcore.hpp"

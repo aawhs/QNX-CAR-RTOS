@@ -2,7 +2,7 @@
  * display.hpp
  *
  *  Created on: Nov. 7, 2021
- *      Author: alec
+ *      Author: Tianyang
  */
 
 #ifndef DISPLAY_HPP_
