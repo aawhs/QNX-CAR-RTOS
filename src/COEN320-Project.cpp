@@ -12,9 +12,6 @@
 #include "Producer.hpp"
 
 
-//The IPC system is essentially a 5 variable fan out / 5 variable fan in
-//But implemented with shared memory
-
 
 int main() {
 
