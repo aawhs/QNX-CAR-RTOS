@@ -11,9 +11,16 @@
 //see https://stackoverflow.com/questions/19469475/struct-static-member-meaning-definition
 struct timespec appcore::start_time = {.tv_sec = 0, .tv_nsec = 0};
 
+//Initialize shm static members
+int appcore::shm_fd = 0;
+
+
 appcore::appcore()
 {
 	clock_gettime(CLOCK_REALTIME, &(start_time)); //get current time
+
+	//initialize the shared memory
+	createSharedMem();
 }
 
 int appcore::getElapsedTimeSeconds()
@@ -35,29 +42,11 @@ int appcore::getElapsedTimeSeconds()
 	return elapsed_seconds;
 }
 
-int appcore::writeSharedMem(int loc)
-{
-
-}
-
-int appcore::readSharedMem(int loc)
-{
-	void *ptr;
-	/* now read from the shared memory region */
-	printf("Content in the shared memory:\n");
-	printf("    %s", ptr);
-	/* remove the shared memory segment */
-	if (shm_unlink(name) == -1) {
-    	perror("in shm_unlink()");
-		exit(1);
-	}
-}
-
-int appcore::createSharedMem()
+float appcore::readSharedMemFloat(int loc)
 {
 	void *ptr;
 	/* open the shared memory segment */
-	shm_fd = shm_open(name, O_RDONLY, 0666);
+	//shm_fd = shm_open(name, O_RDONLY, 0666);
 	if (shm_fd == -1) {
     	perror("in shm_open()");
 		exit(1);
@@ -69,4 +58,44 @@ int appcore::createSharedMem()
     	perror("in mmap()");
 		exit(1);
 	}
+
+	/* now read from the shared memory region */
+	printf("Content in the shared memory:\n");
+	printf("    %s", ptr);
+	/* remove the shared memory segment */
+	if (shm_unlink(name) == -1) {
+    	perror("in shm_unlink()");
+		exit(1);
+	}
+
+	return 0;
+}
+
+int appcore::readSharedMemInt(int loc)
+{
+	return 0;
+}
+
+int appcore::writeSharedMem(int loc, float val)
+{
+	return 0;
+}
+
+int appcore::writeSharedMem(int loc, int val)
+{
+	return 0;
+}
+
+int appcore::createSharedMem()
+{
+	//std::cout << name;
+
+	/* create the shared memory segment */
+	shm_fd = shm_open(appcore::name, O_CREAT | O_RDWR, 0666);
+
+	if (appcore::shm_fd == -1){
+    	perror("In shm_open()");
+		exit(1);
+	}
+
 }
