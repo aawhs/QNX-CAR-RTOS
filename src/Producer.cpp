@@ -57,4 +57,19 @@ bool Producer::loadData()
     return false;
 }
 
+void Producer::run()
+{
+	int elapsedTime;
+	int index = 0;
+	while(index < 20){
+		cout << "Producer Thread Started" <<endl;
+		elapsedTime = appcore::getElapsedTimeSeconds();
+		data = dataVector[elapsedTime];
+		index+=5;
+		cout << "Elapsed Time : " << elapsedTime <<" Data : "<<data<<endl;
+		cout << "Producer Thread Suspended" <<endl;
+		sleep(5);
+	}
+}
+
 
