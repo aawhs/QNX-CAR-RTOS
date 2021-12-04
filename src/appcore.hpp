@@ -17,21 +17,32 @@
 #include <stdlib.h>
 #include <iostream>
 
+//for shared mem
+#include <stdio.h>
+#include <fcntl.h>
+#include <sys/mman.h>
+
 
 class appcore
 {
 	public:
 		appcore();
 		static int getElapsedTimeSeconds();
+		static float readSharedMemFloat(int loc);
+		static int readSharedMemInt(int loc);
+		static int writeSharedMem(int loc, float val);
+		static int writeSharedMem(int loc, int val);
+
 
 	private:
 		static struct timespec start_time; //time that program was started at
 
 		static int shm_fd;
-		const char *name = "/my_shm";
-		const int SIZE = 64;
+		static constexpr char *name = "/my_shm";
+		static const int SIZE = 64;
 
 		static int createSharedMem();
+
 };
 
 

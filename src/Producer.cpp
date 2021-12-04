@@ -49,14 +49,12 @@ bool Producer::loadData()
         filestream >> data;
     }
 
+    cout << "Data " << filename << " record count: " << dataVector.size() << endl;
+
     if(filestream.eof()){
         return true;
     }
     return false;
 }
-
-
-
-https://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@github.com/SuperThunder/COEN320-Project.git
 
 

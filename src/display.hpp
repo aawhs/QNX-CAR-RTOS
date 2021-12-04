@@ -8,7 +8,7 @@
 #ifndef DISPLAY_HPP_
 #define DISPLAY_HPP_
 
-
+#include "appcore.hpp"
 
 
 
