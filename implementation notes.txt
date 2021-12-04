@@ -1,0 +1,51 @@
+How project works
+
+Simple timing options
+
+1) use threads and sleeping for task period
+
+2) use one timer with modulos for the task period
+    - still need a seperate thread 
+
+
+
+Init
+- Creates instance of command processor function running in thread
+- Creates instance of producer 5x running in thread
+- Creates instance running in thread
+
+
+
+Shared memory structure
+Byte    Value Stored
+0       Task 1 Period (Fuel)
+4       Task 2 Period (RPM)
+8       Task 3 Period (Coolant Temperature)
+12      Task 4 Period (Gear)
+16      Task 5 Period (Speed)
+20      Task 1 Value (Fuel)
+24      Task 2 Value (RPM)
+28      Task 3 Value (Coolant Temperature)
+32      Task 4 Value (Gear)
+36      Task 5 Value (Speed)
+
+
+Command processor(shared_memory_filename)
+- runs in thread
+- does not sleep, is blocked by waiting for user input
+- Prompts user for producer task number (1-5) and new period for that task (1-100)
+- Writes the new period to appropriate location of shared memory for that task
+- On first startup, set default value of 5s period for all tasks
+
+
+
+Producer(data_filename, shared_memory_filename, shared_memory_period_index, shared_memory_value_index)
+- runs in thread
+- checks getElapsedTimeSeconds and writes appropriate data value for that time to appropriate location of shared memory
+- reads next period from appropriate location of shared memory file 
+- sleeps period amount
+
+
+Consumer(shared_memory_filename, shared_mem_values_start)
+- print out the 5 variables in a nice looking way
+- reads them from shared memory (contiguous 5 floats)
