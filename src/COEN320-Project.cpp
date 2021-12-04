@@ -60,6 +60,10 @@ int main() {
 		cout << "Data loaded"<< endl;
 	}
 
+	thread pthread1 = thread(producer1.run());
+	
+	pthread1.join();
+
 	return 0;
 
 }
