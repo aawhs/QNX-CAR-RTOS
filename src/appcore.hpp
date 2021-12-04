@@ -32,6 +32,7 @@ class appcore
 		static int readSharedMemInt(int loc);
 		static int writeSharedMem(int loc, float val);
 		static int writeSharedMem(int loc, int val);
+		static int dumpSharedMem();
 
 
 	private:
@@ -39,7 +40,7 @@ class appcore
 
 		static int shm_fd;
 		static constexpr char *name = "/my_shm";
-		static const int SIZE = 64;
+		static const int SHM_SIZE = 64;
 
 		static int createSharedMem();
 
