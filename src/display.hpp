@@ -10,6 +10,8 @@
 
 #include "appcore.hpp"
 
+void displayFunc();
+
 
 
 #endif /* DISPLAY_HPP_ */
