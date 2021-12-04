@@ -9,6 +9,10 @@
 #define COMMANDPROCESSOR_HPP_
 
 
+#include "appcore.hpp"
+#include <vector>
+#include <iostream>
+
 
 
 

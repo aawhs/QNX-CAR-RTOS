@@ -26,6 +26,8 @@ Byte    Value Stored
 36      Task 5 Value (Speed)
 
 
+NOTE: shared memory filename does not need to be passed if you use appcore:writeSharedMem / appcore::readSharedMem
+
 Command processor(shared_memory_filename)
 - runs in thread
 - does not sleep, is blocked by waiting for user input
