@@ -191,4 +191,6 @@ int appcore::createSharedMem()
 	{
 		appcore::writeSharedMem(i, (i-5)*1.0f);
 	}
+
+	return 0;
 }
