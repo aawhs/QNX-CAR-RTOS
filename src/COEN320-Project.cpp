@@ -24,7 +24,6 @@ int main() {
 	cout << "Initial time: " << appcore::getElapsedTimeSeconds() << std::endl;
 
 	commandprocessor cp;
-	cp.init();
 
 	Producer producer1("dataset-Fuel_consumption.txt");
 
