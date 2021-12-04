@@ -49,8 +49,14 @@ int main() {
 	std::cout << "Initial time: " << ac.getElapsedTimeSeconds() << std::endl;
 
 	//Does indeed show 5
-	//sleep(5);
-	//std::cout << "New time: " << ac.getElapsedTimeSeconds() << std::endl;
+	sleep(5);
+	std::cout << "New time: " << ac.getElapsedTimeSeconds() << std::endl;
+
+	sleep(5);
+	std::cout << "New time: " << ac.getElapsedTimeSeconds() << std::endl;
+
+	sleep(5);
+	std::cout << "New time: " << ac.getElapsedTimeSeconds() << std::endl;
 
 
 	//IPC for command input task -> producer tasks
