@@ -53,7 +53,11 @@ void commandprocessor::updatePeriod() {
     {
         cout << "Enter valid task number (1 to 5) and period: ";
         cin >> taskNum >> period;
+
+		#ifdef DEBUG
         cout << endl << "Tasknum: " << taskNum << " period " << period << endl;
+		#endif
+
         cout << endl;
     }
 
