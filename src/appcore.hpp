@@ -12,6 +12,9 @@
 #ifndef APPCORE_HPP_
 #define APPCORE_HPP_
 
+//Define debug - if defined, some functions will create extra output
+//#define DEBUG
+
 #include <ctime>
 #include <unistd.h>
 #include <stdlib.h>
