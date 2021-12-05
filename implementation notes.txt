@@ -1,12 +1,3 @@
-How project works
-
-
-Timing
-- Done with threads and sleep(period)
-- If we wanted to be fancier we could switch to tracking milliseconds and use sleep( (period-elapsed) / 1000)
-    - Our functions are probably fast enough this doesn't matter
-
-
 Init
 - Sets up shared memory
 - Creates threads for command processor, 5x producer instances, consumer display
@@ -49,3 +40,9 @@ Consumer(shared_memory_filename)
 - Runs periodically with p=1
 - reads the 5 variables from shared memory (contiguous 5 floats from byte 20 to 39)
 - print out the 5 variables in a nice looking way
+
+Timing
+- Done with threads and sleep(period)
+- If we wanted to be fancier we could switch to tracking milliseconds and use sleep( (period-elapsed) / 1000)
+    - Our functions are probably fast enough this doesn't matter
+
