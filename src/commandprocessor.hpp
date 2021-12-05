@@ -16,7 +16,9 @@
 class commandprocessor {
 public:
 	commandprocessor();
+	~commandprocessor();
 	static void updatePeriod();
+	static void run();
 private:
 	static void init();
 };

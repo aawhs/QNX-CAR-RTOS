@@ -14,6 +14,11 @@ commandprocessor::commandprocessor() {
 	init();
 }
 
+commandprocessor::~commandprocessor()
+{
+
+}
+
 void commandprocessor::init()
 {
     // Create task pairs with task number and period length
@@ -50,6 +55,14 @@ void commandprocessor::updatePeriod() {
 
     // Write period to shared memory for given taskNum.
     appcore::writeSharedMem(taskNum-1, period);
+}
+
+void commandprocessor::run()
+{
+	while(true)
+	{
+		updatePeriod();
+	}
 }
 
 

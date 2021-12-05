@@ -13,6 +13,9 @@
 Producer::Producer(string fileName, int task)
 {
     setFileName(fileName);
+    openFile();
+    loadData();
+    tasknumber = task;
 }
 
 Producer::~Producer()

@@ -14,7 +14,6 @@
 #include "Producer.hpp"
 
 
-
 int main() {
 
 	 char tmp[256];
@@ -28,20 +27,39 @@ int main() {
 
 	//Dataset and task number (zero indexed, so task 1 fuel is 0)
 	Producer producer1("dataset-Fuel_consumption.txt", 0);
+	Producer producer2("dataset-Engine_speed.txt", 1);
+	Producer producer3("dataset-Engine_coolant_temperature.txt", 2);
+	Producer producer4("dataset-Current_Gear.txt", 3);
+	Producer producer5("dataset-Vehicle_speed.txt", 4);
 
-	if(producer1.openFile()){
-		cout << "File stream of File: " << producer1.getFileName() << " is open"<< endl;
-	}
-	if(producer1.loadData()){
-		cout << "Data loaded"<< endl;
-	}
+	//	if(producer1.openFile()){
+	//		cout << "File stream of File: " << producer1.getFileName() << " is open"<< endl;
+	//	}
+	//	if(producer1.loadData()){
+	//		cout << "Data loaded"<< endl;
+	//	}
 
-	thread pthread1 (&Producer::run, &producer1);
-	thread pthread2 (&displayFunc);
+	thread thr_command (&commandprocessor::run);
+	thread thr_prod_1 (&Producer::run, &producer1);
+	thread thr_prod_2 (&Producer::run, &producer2);
+	thread thr_prod_3 (&Producer::run, &producer3);
+	thread thr_prod_4 (&Producer::run, &producer4);
+	thread thr_prod_5 (&Producer::run, &producer5);
+	thread thr_display (&displayFunc);
 
-	pthread1.join();
-	pthread2.join();
+	//thr_command.join();
+	cout << "Command Threads Ended" << endl;
+
+	thr_prod_1.join();
+	thr_prod_2.join();
+	thr_prod_3.join();
+	thr_prod_4.join();
+	thr_prod_5.join();
 	cout << "Producer Threads Ended" <<endl;
+
+	thr_display.join();
+	cout << "Display thread ended" << endl;
+
 
 	return 0;
 
