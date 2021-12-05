@@ -49,7 +49,7 @@ void commandprocessor::updatePeriod() {
     //cout << "Enter task number (1 to 5) and period: " << endl;
     //cin >> taskNum >> period;
 
-    while (taskNum < 1 or taskNum > 5 or period < 0)
+    while (taskNum < 1 or taskNum > 5 or period < 1)
     {
         cout << "Enter valid task number (1 to 5) and period: " << endl;
         cin >> taskNum >> period;
