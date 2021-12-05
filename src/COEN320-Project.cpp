@@ -32,13 +32,6 @@ int main() {
 	Producer producer4("dataset-Current_Gear.txt", 3);
 	Producer producer5("dataset-Vehicle_speed.txt", 4);
 
-	//	if(producer1.openFile()){
-	//		cout << "File stream of File: " << producer1.getFileName() << " is open"<< endl;
-	//	}
-	//	if(producer1.loadData()){
-	//		cout << "Data loaded"<< endl;
-	//	}
-
 	thread thr_command (&commandprocessor::run);
 	thread thr_prod_1 (&Producer::run, &producer1);
 	thread thr_prod_2 (&Producer::run, &producer2);
