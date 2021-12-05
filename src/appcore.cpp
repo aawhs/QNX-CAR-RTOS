@@ -8,6 +8,9 @@
 #include "appcore.hpp"
 #include "commandprocessor.hpp"
 
+//Define debug - if defined, some functions will create extra output
+#define DEBUG
+
 //Initialize the static start_time member
 //see https://stackoverflow.com/questions/19469475/struct-static-member-meaning-definition
 struct timespec appcore::start_time = {.tv_sec = 0, .tv_nsec = 0};
