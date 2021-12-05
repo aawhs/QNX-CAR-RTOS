@@ -47,7 +47,7 @@ int main() {
 	thread thr_prod_5 (&Producer::run, &producer5);
 	thread thr_display (&displayFunc);
 
-	//thr_command.join();
+	thr_command.join();
 	cout << "Command Threads Ended" << endl;
 
 	thr_prod_1.join();

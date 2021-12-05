@@ -43,14 +43,18 @@ void commandprocessor::init()
 void commandprocessor::updatePeriod() {
     // Get taskNum and period from user input.
     int taskNum, period;
+    taskNum = 0;
+    period = -1;
 
-    cout << "Enter task number (1 to 5) and period: ";
-    cin >> taskNum >> period;
+    //cout << "Enter task number (1 to 5) and period: " << endl;
+    //cin >> taskNum >> period;
 
-    while (taskNum < 1 or taskNum > 5)
+    while (taskNum < 1 or taskNum > 5 or period < 0)
     {
         cout << "Enter valid task number (1 to 5) and period: ";
         cin >> taskNum >> period;
+        cout << endl << "Tasknum: " << taskNum << " period " << period << endl;
+        cout << endl;
     }
 
     // Write period to shared memory for given taskNum.
